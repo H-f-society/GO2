@@ -40,13 +40,10 @@ function liberty2(x, y, color, array_flag) {
 	// 判断 ‘左、右、上、下’ 是否存在同色棋子，若存在则进行递归;
 	if( !Transboundary(x-1, y) && number[x-1][y]==color && array_flag[x-1][y]!=color )
 		return liberty2(x-1, y, color, array_flag);
-
 	if( !Transboundary(x+1, y) && number[x+1][y]==color && array_flag[x+1][y]!=color )
 		return liberty2(x+1, y, color, array_flag);
-
 	if( !Transboundary(x, y-1) && number[x][y-1]==color && array_flag[x][y-1]!=color )
 		return liberty2(x, y-1, color, array_flag);
-
 	if( !Transboundary(x, y+1) && number[x][y+1]==color && array_flag[x][y+1]!=color )
 		return liberty2(x, y+1, color, array_flag);
 }
