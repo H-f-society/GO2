@@ -73,7 +73,7 @@ $(document).ready(function(){
 		var y = Math.floor(e.offsetY/30);
 		if(number[x][y] == 0) {
 			s_Regrets.push(x, y, flag++);
-			//show();
+			show();
 			if(flag%2!=0){
 				piece(ctx1, x, y, 13, "white"); // 刚落子的颜色
 				$("#now").css("background-image", "url('image/black.png')"); // 下一个落子颜色
@@ -87,7 +87,7 @@ $(document).ready(function(){
 				liberty(x, y, 1); // 进入的递归
 				$("#black").html(eat_black); // 表明提子数
 			}
-			//show();
+			show();
 		}
 	}
 });
