@@ -20,6 +20,7 @@ $(document).ready(function() {
     	var nowX = s_Regrets.popX(), nowY = s_Regrets.popY(), nowNum = s_Regrets.popNum();
 		number[nowX][nowY] = 0;
 		flag = flag - 1;
+		reset_flag(flag_arr);
 		ctx1.beginPath();
 		ctx1.clearRect(nowX*30, nowY*30, 30, 30);
 		if(nowNum%2==0) $("#now").css("background-image", "url('image/white.png')");
@@ -27,6 +28,7 @@ $(document).ready(function() {
     }
     function next() { // 让子
 		flag = flag - 1;
+		reset_flag(flag_arr);
 		if(flag%2==0) $("#now").css("background-image", "url('image/white.png')");
 		else $("#now").css("background-image", "url('image/black.png')");
     }
