@@ -9,24 +9,15 @@ var whiteImg = new Image();
 blackImg.src = "image/black.png";
 whiteImg.src = "image/white.png";
 var flag     = 1;
-var number     = [],
-	flag_up    = [],
-	flag_down  = [],
-	flag_left  = [],
-	flag_right = [];
+var number 	   = [],
+	flag_arr   = [];
 var ctx, ctx1, canvas, canvas1;
 for(var i=0; i<19; i++) {
 	number[i]     = [];
-	flag_up[i]    = [];
-	flag_down[i]  = [];
-	flag_left[i]  = [];
-	flag_right[i] = [];
+	flag_arr[i]   = [];
 	for(var j=0; j<19; j++) {
 		number[i][j]     = 0;
-		flag_up[i][j]    = 0;
-		flag_down[i][j]  = 0;
-		flag_left[i][j]  = 0;
-		flag_right[i][j] = 0;
+		flag_arr[i][j]   = 0;
 	}
 }
 function show() {
