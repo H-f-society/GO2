@@ -40,35 +40,27 @@ function liberty2(x, y, color) {
 	queX.push(x);
 	queY.push(y);
 	while(queX.length>0 && queY.length>0) {
-		console.log(queX, queY);
 		var i = queX.shift();
 		var j = queY.shift();
-		console.log(i, j, color, queX.length, queY.length);
-		if(Viable(i, j)) {
-			console.log(true);
+		if(Viable(i, j))
 			return true;
-		}
 		flag_arr[i][j] = color;
 		if(!Transboundary(i-1, j) && number[i-1][j]==color && flag_arr[i-1][j]!=color) {
-			console.log("left");
 			queX.push(i-1);
 			queY.push(j);
 			flag_arr[i-1][j] = color;
 		}
 		if(!Transboundary(i+1, j) && number[i+1][j]==color && flag_arr[i+1][j]!=color) {
-			console.log("right");
 			queX.push(i+1);
 			queY.push(j);
 			flag_arr[i+1][j] = color;
 		}
 		if(!Transboundary(i, j-1) && number[i][j-1]==color && flag_arr[i][j-1]!=color) {
-			console.log("top");
 			queX.push(i);
 			queY.push(j-1);
 			flag_arr[i][j-1] = color;
 		}
 		if(!Transboundary(i, j+1) && number[i][j+1]==color && flag_arr[i][j+1]!=color) {
-			console.log("down");
 			queX.push(i);
 			queY.push(j+1);
 			flag_arr[i][j+1] = color;
