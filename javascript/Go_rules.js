@@ -6,9 +6,9 @@
 */
 
 // 围棋规则实现
-var eat_white = 0, eat_black = 0;
-var now_x = 0, now_y = 0;
-var direction = [[-1, 0], [1, 0], [0, -1], [0, 1]];
+var eat_white = 0, eat_black = 0; // 记录黑白提子数
+var now_x = 0, now_y = 0; //
+var direction = [[-1, 0], [1, 0], [0, -1], [0, 1]]; // 遍历方向，上、下、左、右
 function liberty(x, y, color) {
 	for(let k=0; k<direction.length; k++) {
 		if( !Transboundary(x+direction[k][0], y+direction[k][1]) && number[x+direction[k][0]][y+direction[k][1]]==color ) {
@@ -19,6 +19,7 @@ function liberty(x, y, color) {
 	}
 	reset_flag(flag_arr);
 }
+// 广度优先算法，遍历棋子周围是否存在活气
 function liberty2(x, y, color) {
 	var queX = [], queY = [];
 	queX.push(x);
@@ -43,13 +44,14 @@ function liberty2(x, y, color) {
 	console.log(false);
 	//return false;
 }
-// 递归条件判断是否越界
+// 遍历条件判断是否越界
 function Transboundary(x, y) {
 	if(x<0 || x>18 || y<0 || y>18)
 		return true;
 	else 
 		return false;
 }
+// 判断四个方向是否存在活气，true or false.
 function Viable(x, y) {
 	if( (!Transboundary(x-1, y) && number[x-1][y] == 0) ||
 		(!Transboundary(x+1, y) && number[x+1][y] == 0) ||
@@ -58,7 +60,7 @@ function Viable(x, y) {
 		return true;
 	return false;
 }
-// 提子效果，将递归所记录下的可吃棋子记录下来，之后一并提子;
+// 提子效果，将广度遍历所记录下的可吃棋子记录下来，之后一并提子;
 function eatChess(color, flag_arr) {
 	for(var i=0; i<19; i++) {
 		for(var j=0; j<19; j++) {
@@ -73,6 +75,7 @@ function eatChess(color, flag_arr) {
 		}
 	}
 }
+// 清除标记
 function reset_flag(array_flag) {
 	for(var i=0; i<19; i++) {
 		for(var j=0; j<19; j++) {
