@@ -8,8 +8,8 @@
 // 围棋规则实现
 var eat_white = 0, eat_black = 0;
 var now_x = 0, now_y = 0;
+var direction = [[-1, 0], [1, 0], [0, -1], [0, 1]];
 function liberty(x, y, color) {
-	var direction = [[-1, 0], [1, 0], [0, -1], [0, 1]];
 	for(let k=0; k<direction.length; k++) {
 		if( !Transboundary(x+direction[k][0], y+direction[k][1]) && number[x+direction[k][0]][y+direction[k][1]]==color ) {
 			if(!liberty2(x+direction[k][0], y+direction[k][1], color))
@@ -21,7 +21,6 @@ function liberty(x, y, color) {
 }
 function liberty2(x, y, color) {
 	var queX = [], queY = [];
-	var direction = [[-1, 0], [1, 0], [0, -1], [0, 1]];
 	queX.push(x);
 	queY.push(y);
 	while(queX.length>0 && queY.length>0) {
