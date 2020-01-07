@@ -49,15 +49,11 @@ $(document).ready(function(){
 		position.fill();
 		position.stroke();
 	}
-	piece(ctx, 3 , 3 , 5, "black"); 	// 绘制棋盘上的8个星位、1个天元
-	piece(ctx, 15, 3 , 5, "black");
-	piece(ctx, 3 , 15, 5, "black");
-	piece(ctx, 15, 15, 5, "black");
-	piece(ctx, 9 , 9 , 5, "black");
-	piece(ctx, 3 , 9 , 5, "black");
-	piece(ctx, 9 , 3 , 5, "black");
-	piece(ctx, 15 , 9 , 5, "black");
-	piece(ctx, 9 , 15 , 5, "black");
+	// 绘制棋盘上的8个星位、1个天元
+	var star = [[3, 3], [15, 3], [3, 15], [15, 15], [9, 9], [3, 9], [9, 3], [15, 9], [9, 15]];
+	for(let i=0; i<star.length; i++) {
+		piece(ctx, star[i][0], star[i][1], 5, "black");
+	}
 
 	canvas1.onclick = function(e) {		// 鼠标点击棋盘落子
 		var x = Math.floor(e.offsetX/30);
