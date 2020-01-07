@@ -9,25 +9,13 @@
 var eat_white = 0, eat_black = 0;
 var now_x = 0, now_y = 0;
 function liberty(x, y, color) {
-	if( !Transboundary(x-1, y) && number[x-1][y]==color ) {
-		if(!liberty2(x-1, y, color))
-			eatChess(color, flag_arr);
-		reset_flag(flag_arr);
-	}
-	if( !Transboundary(x+1, y) && number[x+1][y]==color ) {
-		if(!liberty2(x+1, y, color))
-			eatChess(color, flag_arr);
-		reset_flag(flag_arr);
-	}
-	if( !Transboundary(x, y-1) && number[x][y-1]==color ) {
-		if(!liberty2(x, y-1, color))
-			eatChess(color, flag_arr);
-		reset_flag(flag_arr);
-	}
-	if( !Transboundary(x, y+1) && number[x][y+1]==color ) {
-		if(!liberty2(x, y+1, color))
-			eatChess(color, flag_arr);
-		reset_flag(flag_arr);
+	var direction = [[-1, 0], [1, 0], [0, -1], [0, 1]];
+	for(let k=0; k<direction.length; k++) {
+		if( !Transboundary(x+direction[k][0], y+direction[k][1]) && number[x+direction[k][0]][y+direction[k][1]]==color ) {
+			if(!liberty2(x+direction[k][0], y+direction[k][1], color))
+				eatChess(color, flag_arr);
+			reset_flag(flag_arr);
+		}
 	}
 	reset_flag(flag_arr);
 }
