@@ -33,6 +33,7 @@ function liberty(x, y, color) {
 }
 function liberty2(x, y, color) {
 	var queX = [], queY = [];
+	var direction = [[-1, 0], [1, 0], [0, -1], [0, 1]];
 	queX.push(x);
 	queY.push(y);
 	while(queX.length>0 && queY.length>0) {
@@ -41,25 +42,15 @@ function liberty2(x, y, color) {
 		if(Viable(i, j))
 			return true;
 		flag_arr[i][j] = color;
-		if(!Transboundary(i-1, j) && number[i-1][j]==color && flag_arr[i-1][j]!=color) {
-			queX.push(i-1);
-			queY.push(j);
-			flag_arr[i-1][j] = color;
-		}
-		if(!Transboundary(i+1, j) && number[i+1][j]==color && flag_arr[i+1][j]!=color) {
-			queX.push(i+1);
-			queY.push(j);
-			flag_arr[i+1][j] = color;
-		}
-		if(!Transboundary(i, j-1) && number[i][j-1]==color && flag_arr[i][j-1]!=color) {
-			queX.push(i);
-			queY.push(j-1);
-			flag_arr[i][j-1] = color;
-		}
-		if(!Transboundary(i, j+1) && number[i][j+1]==color && flag_arr[i][j+1]!=color) {
-			queX.push(i);
-			queY.push(j+1);
-			flag_arr[i][j+1] = color;
+		for(let k=0; k<direction.length; k++) {
+			if( !Transboundary(i+direction[k][0], j+direction[k][1]) && 
+				number[i+direction[k][0]][j+direction[k][1]]==color  && 
+				flag_arr[i+direction[k][0]][j+direction[k][1]]!=color) {
+
+				queX.push(i+direction[k][0]);
+				queY.push(j+direction[k][1]);
+				flag_arr[i+direction[k][0]][j+direction[k][1]] = color;
+			}
 		}
 	}
 	console.log(false);
